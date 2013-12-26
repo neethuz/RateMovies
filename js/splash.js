@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
     window.setTimeout(function () {
-        location.href = "/dashboard.html";
+        location.href = "dashboard.html";
     }, 3000)
 });
