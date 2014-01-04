@@ -74,7 +74,7 @@
               $('.skipmovie').live('click', function () {
                   
 
-                  $(this).parent().parent().parent().slideUp(2500, 'linear');
+                  $(this).parent().parent().parent().slideUp(500, 'linear');
                   $.ajax({
                       url: "http://ws.ratemovieshere.com/RmhRestApiService.svc/Getmovies/63/1/"+Skip,
                       contentType: "application/jsonp",
@@ -101,7 +101,7 @@
                   })
               });
               $('p.controls a').live('click', function () {
-                  $(this).parent().parent().slideUp(2500, 'linear');
+                  $(this).parent().parent().slideUp(500, 'linear');
                   $.ajax({
                       type: 'GET',
                       url: 'http://ws.ratemovieshere.com/RmhRestApiService.svc/Getmovies/63/1/' + Skip,
@@ -173,7 +173,7 @@
                   tooltip = false,
                   title = false;
 
-              targets.bind('mouseenter', function () {
+              targets.bind('touchmove', function () {
                   target = $(this);
                   tip = target.attr('title');
                   tooltip = $('<div id="tooltip"></div>');
