@@ -190,7 +190,6 @@
         methods._target.call(self, score, evt);
 
         if (self.opt.mouseover) {
-            alert('here');
           self.opt.mouseover.call(self, score, evt);
         }
       });
@@ -443,7 +442,7 @@
     cancelOn      : 'cancel-on.png',
     cancelPlace   : 'left',
     click         : undefined,
-    half          : false,
+    half          : true,
     halfShow      : true,
     hints         : ['bad', 'poor', 'regular', 'good', 'gorgeous'],
     iconRange     : undefined,
@@ -453,7 +452,7 @@
     number        : 5,
     numberMax     : 20,
     path          : '',
-    precision     : true,
+    precision     : false,
     readOnly      : false,
     round         : { down: .25, full: .6, up: .76 },
     score         : undefined,

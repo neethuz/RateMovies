@@ -85,10 +85,15 @@ html {
 #header {
     width:100%;
     height:50px;
-    padding:10px 0px;
+    border-bottom:1px solid #444;
+    padding:5px 0px;
     vertical-align:middle;
     background:url(../header_bg.gif) repeat-x;
     text-align:center;
+    margin-bottom:2%;
+}
+#menu-slot {
+
 }
 #back-icon {
     width:12%;
@@ -98,6 +103,54 @@ html {
     margin-right:2%;
     margin-top:3px;
 }
+.menu {
+    width:20%;
+    float:left;
+    text-align:right;
+    margin-left:3%;
+    margin-right:2%;
+    margin-top:3px;
+    position:relative;
+}
+.menu-dropdown {
+    width:180px;
+    background:white;
+    display:none;
+    position:absolute;
+    float:left;
+   right:10px;
+   top:40px;
+    z-index:1000;
+}
+    .menu-dropdown ul {
+        width:100%;
+        list-style:none;
+    }
+    .menu-dropdown ul li{
+        width:100%;
+        list-style:none;
+    }
+    .menu-dropdown ul li a{
+        width:95%;
+        font-size:0.9em;
+        text-decoration:none;
+        font-family:Tahoma;
+        border-bottom:1px solid #666;
+        display:block;
+        padding:10px 0px;
+        text-align:left;
+        padding-left:5%;
+        color:#333;
+    }
+    .menu-dropdown ul li a:hover{
+        background:#1b83e6;
+        color:#fff;
+    }
+    .menu img {
+        width:5px;
+        margin-top:10px;
+        float:right;
+    }
 #home-icon {
     width:12%;
     float:right;
@@ -112,10 +165,11 @@ html {
 #logo {
     width:70%;
     float:left;
-    
+    text-align:left;
+    padding-left:4%;
 }
      #logo img {
-        width:100%;
+        width:80%;
         max-width:240px;
     }
 #home-icon img, #back-icon img {
@@ -172,7 +226,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', end
             margin-bottom: 5%;
         }
         .poster-container {
-            width:100%;
+            width:45%;
             float:left;
             margin:0px auto;
             text-align:center;
@@ -184,7 +238,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', end
             cursor:default;
         }
             .size-demo img {
-                width:8%;
+                width:15%;
             }
             .poster-container img {
                margin:5px auto;
@@ -197,7 +251,7 @@ box-shadow: 0px 0px 10px 1px rgb(0, 13, 18);
 vertical-align: top;
             }
         .movie-details {
-            width:100%;
+            width:53%;
             float: left;
             padding-top:0px;
         }
@@ -237,10 +291,30 @@ letter-spacing:0.5px;
             text-align:center;
             float:left;
         }
+            .movie-details p.rating {
+             margin-top:10px;
+                
+            }
+                .movie-details p.rating span {
+                    font-size:18pt;
+                    font-weight:bold;
+                    color:#30ee57;
+                }
         .movie-details p.genre span{
             font-size:8pt;
-            color:#05fb62;
+                text-align:center;
+            color:#2bf5ee;
         }
+            .movie-details p.genre a {
+                margin-top:10px;
+                float:left;
+                width:100%;
+                color:yellow;
+                text-decoration:none;
+            }
+            .movie-details p.genre a:focus {
+                color:white;
+            }
             .movie-details p.director {
                 font-size:8pt;
             color:#fe3895;

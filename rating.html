@@ -12,24 +12,36 @@
     <script src="js/jquery.easing.1.3.js"></script>
   <script type="text/javascript" src="js/jquery.raty.js"></script>
     <script src="js/jquery.cookie.js"></script>
-
+    <script>
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            var touch = e.touches[0];
+            alert(touch.pageX + " - " + touch.pageY);
+        }, false);
+    </script>
 </head>
 <body>
   <div class="main">
         <div id="header">
-            <div id="back-icon">
-                <a href="#">
-                    <img src="back_icon.png" /></a>
-            </div>
+           
             <div id="logo">
                 <a href="dashboard.html" >
                     <img src="logo.png" /></a>
             </div>
-             <div id="home-icon">
-                <a href="dashboard.html">
-                    <img src="home_icon.png" /></a>
+            <div class="menu">
+                <a href="#">
+                    <img src="menu_bg.png" />
+                </a>
+                
             </div>
-            
+            <div class="menu-dropdown">
+                <ul>
+                    <li><a href="rating.html">Ratings</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="#">Top Movies</a></li>
+                    <li><a href="#">Trailers</a></li>
+                </ul>
+                </div>
         </div>
       <div class="dashboard">
           <input type="hidden" id="hdnUserID" value="63" />
@@ -38,14 +50,14 @@
       </div>
       <script>
           function jsonpCallback(response) {
-              $('#ratingslider').html(response.GetMoviesResult).on('bind', bindRaty());
+              $('#ratingslider').html(response.InitialGetMoviesResult).on('bind', bindRaty());
               $('.loading').attr("style", "display:none");
           }
           function InitialLoad() {
               $('.loading').attr("style", "display:block");
               $.ajax({
                   type: 'GET',
-                  url: 'http://ws.ratemovieshere.com/RmhRestApiService.svc/Getmovies/63/1/0',
+                  url: 'http://ws.ratemovieshere.com/RmhRestApiService.svc/InitialGetMovies/63/1/0',
                   contentType: "application/jsonp",
                   crossDomain: true,
                   dataType: 'jsonp',
@@ -59,11 +71,15 @@
               });
             
           }
-          var Skip = 1;
+          var Skip = 5;
           $(document).ready(function () {
+              $('.menu a').click(function () {
+                  $('.menu-dropdown').slideToggle();
+              });
               InitialLoad();
               $('.skipmovie').live('click', function () {
                   
+
                   $(this).parent().parent().parent().slideUp(2500, 'linear');
                   $.ajax({
                       url: "http://ws.ratemovieshere.com/RmhRestApiService.svc/Getmovies/63/1/"+Skip,
@@ -73,7 +89,7 @@
                       jsonpCallback: 'jsonpCallback',
                       success: function (data) {
                           Skip += 1;
-                              $('#ratingslider').append(data.d).on('bind', bindRaty());
+                          $('#ratingslider').append(data.GetMoviesResult).on('bind', bindRaty());
                               obj.slideUp(2500, 'linear');
 
                           
@@ -100,8 +116,7 @@
                       dataType: 'jsonp',
                       success: function (data) {
                           Skip += 1;
-                       
-                              $('#ratingslider').append(data.d).on('bind', bindRaty());
+                          $('#ratingslider').append(data.GetMoviesResult).on('bind', bindRaty());
                               obj.slideUp(2500, 'linear');
                           
                           //if (data != "") {
@@ -126,13 +141,13 @@
               $('.size-demo').raty({
                   path: '',
                   cancel: false,
-                  number: 10,
+                  number: 5,
                   half: true,
                   size: 44,
                   hints: ['Horrible', 'Pathetic', 'Ok', 'Good', 'Average', 'Better', 'Great', 'Awesome', 'Fantastic', 'Classic'],
-                  starHalf: 'half-small.png',
-                  starOff: 'off-small.png',
-                  starOn: 'on-small.png',
+                  starHalf: 'half-star.png',
+                  starOff: 'off-star.png',
+                  starOn: 'on-start.png',
                   score: function () {
                       return $(this).attr('data-score');
                   },
